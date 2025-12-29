@@ -96,7 +96,7 @@ RESTART NEEDED now. (Use host panel/app)
 
 
 ---
-
+[![Automation_Z_Restart_Companion_Discord.png](https://i.postimg.cc/1XMJd9mL/Automation_Z_Restart_Companion_Discord.png)](https://postimg.cc/QK9Q9ZWb)
 ## Discord integration (optional)
 
 Both tools support Discord webhooks.
