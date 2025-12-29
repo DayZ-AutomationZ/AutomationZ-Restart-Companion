@@ -1,6 +1,6 @@
 # AutomationZ Restart Companion
 [![Automation_Z_Restart_Companion.png](https://i.postimg.cc/yxnvGV6q/Automation_Z_Restart_Companion.png)](https://postimg.cc/5QYBYWFp)
-AutomationZ Restart Delay Companion is a lightweight monitoring and restart-control tool designed to **work alongside AutomationZ Mod Update Auto-Deploy**.  
+AutomationZ Restart Companion is a lightweight monitoring and restart-control tool designed to **work alongside AutomationZ Mod Update Auto-Deploy**.  
 Its primary goal is to **eliminate PBO mismatches, version desyncs, and forced restarts at the wrong time** by introducing a **safe, delayed restart workflow** after mod updates.
 
 This tool was built for DayZ (and similar servers), but the concept is generic and file-based, making it usable for other games and services as well.
