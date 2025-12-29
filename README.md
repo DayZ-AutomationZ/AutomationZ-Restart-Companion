@@ -1,13 +1,179 @@
-# AutomationZ Restart Delay Companion v0.2.7
+# AutomationZ Restart Delay Companion
 
-## Fix
-Auto-start crash fixed by making **all UI updates thread-safe** (monitor thread never touches tkinter).
+AutomationZ Restart Delay Companion is a lightweight monitoring and restart-control tool designed to **work alongside AutomationZ Mod Update Auto-Deploy**.  
+Its primary goal is to **eliminate PBO mismatches, version desyncs, and forced restarts at the wrong time** by introducing a **safe, delayed restart workflow** after mod updates.
 
-## If you are stuck in a crash loop
-Open `app/config.json` and set:
-`"auto_start": false`
-(or delete `app/config.json` and the tool will recreate it)
+This tool was built for DayZ (and similar servers), but the concept is generic and file-based, making it usable for other games and services as well.
 
-## Run
-- Windows: double click `windows_run.bat`
-- Linux/macOS: `bash linux_mac_run.sh`
+---
+
+## Why this tool exists (the problem it fixes)
+
+Server admins commonly face these issues:
+
+- ❌ Mods update on Steam while the server is running
+- ❌ Mods are uploaded while Steam is still writing files
+- ❌ Server restarts too early (mid-deploy)
+- ❌ Players get kicked with **PBO mismatch / version mismatch**
+- ❌ Admins manually babysit restarts after every update
+
+**AutomationZ Restart Delay Companion fixes this by separating concerns:**
+
+- **Mod Update Auto-Deploy** handles *detecting and deploying mods*
+- **Restart Delay Companion** handles *when* a restart should happen
+
+No guessing. No racing Steam. No broken servers.
+
+---
+
+## Core concept (simple & reliable)
+
+The Restart Delay Companion **does not touch mods** and **does not deploy files**.
+
+Instead, it:
+
+1. **Monitors a folder or marker file**
+2. **Detects when an update is finished**
+3. **Starts a configurable restart delay**
+4. **Executes a restart action when the timer ends**
+
+This ensures the restart happens **only after everything is fully deployed and stable**.
+
+---
+
+## How it works together with Mod Update Auto-Deploy
+
+### Recommended setup (best practice)
+
+1. **AutomationZ Mod Update Auto-Deploy**
+   - Deploys all updated mods
+   - After the *entire deploy batch finishes*, it uploads or writes a **marker file**
+     - Example:
+       ```
+       /dayzstandalone/automationz_last_deploy.txt
+       ```
+
+2. **AutomationZ Restart Delay Companion**
+   - Watches that same folder or marker file
+   - When the marker timestamp changes:
+     - A restart timer starts (for example: 5–10 minutes)
+     - If another update happens, the timer resets
+   - When the timer expires:
+     - Server restart is executed safely
+
+This turns multiple mod updates into **one clean restart**.
+
+---
+
+## Supported detection modes
+
+The Restart Delay Companion supports:
+
+### 🔍 Detection
+- **Local folder monitoring**
+- **FTP / FTPS monitoring**
+- Detection by:
+  - Newest file modification time
+  - Dedicated marker file
+
+### ⏱ Restart delay
+- Delay is configurable per target
+- Timer resets automatically if new updates arrive
+
+---
+
+## Supported restart actions
+
+When the delay expires, the tool can:
+
+- ✅ Execute a **local command**
+- ✅ Send a **BattlEye RCON shutdown**
+- ⚠️ Fallback to **notify-only mode** if restart fails
+
+If RCON fails, the tool:
+- Logs the failure
+- Sends a Discord message (optional)
+- Falls back to:
+RESTART NEEDED now. (Use host panel/app)
+
+
+---
+
+## Discord integration (optional)
+
+Both tools support Discord webhooks.
+
+Restart Delay Companion can send messages for:
+- Restart triggered
+- Restart succeeded
+- Restart failed / fallback used
+
+This gives admins full visibility without babysitting the server.
+
+---
+
+## What this tool deliberately does NOT do
+
+- ❌ It does NOT deploy mods
+- ❌ It does NOT modify server files
+- ❌ It does NOT force restarts instantly
+- ❌ It does NOT assume your server layout
+
+This separation is intentional and is what makes the system safe.
+
+---
+
+## Typical real-world workflow
+
+1. Steam updates one or more mods
+2. Mod Update Auto-Deploy detects changes
+3. Mods are uploaded or copied
+4. Marker file is written after deploy finishes
+5. Restart Delay Companion detects marker change
+6. Restart delay timer starts
+7. Timer expires → server restarts cleanly
+8. Players reconnect with matching mods
+
+No PBO errors. No manual restarts. No downtime chaos.
+
+---
+
+## Who this is for
+
+- DayZ server owners
+- Modded game server admins
+- VPS / dedicated server operators
+- Anyone running automated deployments who needs **safe restart timing**
+
+---
+
+## Design philosophy
+
+- File-based logic (host-agnostic)
+- No hardcoded paths
+- No assumptions about hosting providers
+- Simple UI, predictable behavior
+- Tools that do **one job well**
+
+---
+
+## Part of the AutomationZ ecosystem
+
+This tool is designed to be used together with:
+
+- **AutomationZ Mod Update Auto-Deploy**
+- **AutomationZ Restart Delay Companion**
+- Other AutomationZ admin tools
+
+Each tool is independent, but stronger together.
+
+---
+
+## Author
+
+Created by **Danny van den Brande**  
+Open-source, admin-driven, built from real server experience.
+
+Support development:
+- ☕ https://ko-fi.com/dannyvandenbrande
+- 🧠 https://github.com/DayZ-AutomationZ
