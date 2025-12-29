@@ -12,8 +12,6 @@ This tool was built for DayZ (and similar servers), but the concept is generic a
 Server admins commonly face these issues:
 
 - ❌ Mods update on Steam while the server is running
-- ❌ Mods are uploaded while Steam is still writing files
-- ❌ Server restarts too early (mid-deploy)
 - ❌ Players get kicked with **PBO mismatch / version mismatch**
 - ❌ Admins manually babysit restarts after every update
 
@@ -32,10 +30,10 @@ The Restart Delay Companion **does not touch mods** and **does not deploy files*
 
 Instead, it:
 
-1. **Monitors a folder or marker file**
-2. **Detects when an update is finished**
-3. **Starts a configurable restart delay**
-4. **Executes a restart action when the timer ends**
+1. **Monitors a simple marker file, by default automationz_last_deploy.txt (send to the server by Steam-Workshop-Mod-Update-Auto-Deploy after a update or updates are done)**
+2. **By reading the file every 30 second the Restart Companion Detects when an update is finished**
+3. **The Restart companion Starts a restart with a configurable delay (default in config is 1 minute) i personally set it to 5**
+4. **It Executes a restart action when the timer ends, OR if another update is detected resets the timer to what you have set it to, so it wont restart during a update**
 
 This ensures the restart happens **only after everything is fully deployed and stable**.
 
@@ -54,12 +52,12 @@ This ensures the restart happens **only after everything is fully deployed and s
        ```
 
 2. **AutomationZ Restart Delay Companion**
-   - Watches that same folder or marker file
+   - Watches that marker file every 30 seconds (configurable)
    - When the marker timestamp changes:
      - A restart timer starts (for example: 5–10 minutes)
      - If another update happens, the timer resets
    - When the timer expires:
-     - Server restart is executed safely
+     - Server restart is executed safely (WORKS LOCAL AND WITH FTP)
 
 This turns multiple mod updates into **one clean restart**.
 
@@ -128,13 +126,13 @@ This separation is intentional and is what makes the system safe.
 1. Steam updates one or more mods
 2. Mod Update Auto-Deploy detects changes
 3. Mods are uploaded or copied
-4. Marker file is written after deploy finishes
+4. Marker file is overwritten after deploy finishes
 5. Restart Delay Companion detects marker change
 6. Restart delay timer starts
 7. Timer expires → server restarts cleanly
 8. Players reconnect with matching mods
 
-No PBO errors. No manual restarts. No downtime chaos.
+No PBO errors. No manual restarts. No downtime chaos. (YES REALLY! this year old PAIN fixed) :)
 
 ---
 
@@ -162,7 +160,6 @@ No PBO errors. No manual restarts. No downtime chaos.
 This tool is designed to be used together with:
 
 - **AutomationZ Mod Update Auto-Deploy**
-- **AutomationZ Restart Delay Companion**
 - Other AutomationZ admin tools
 
 Each tool is independent, but stronger together.
