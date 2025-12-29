@@ -26,7 +26,7 @@ No guessing. No racing Steam. No broken servers.
 
 ## Core concept (simple & reliable)
 
-The Restart Delay Companion **does not touch mods** and **does not deploy files**.
+The Restart Companion **does not touch mods** and **does not deploy files**.
 
 Instead, it:
 
@@ -51,7 +51,7 @@ This ensures the restart happens **only after everything is fully deployed and s
        /dayzstandalone/automationz_last_deploy.txt
        ```
 
-2. **AutomationZ Restart Delay Companion**
+2. **AutomationZ Restart Companion**
    - Watches that marker file every 30 seconds (configurable)
    - When the marker timestamp changes:
      - A restart timer starts (for example: 5–10 minutes)
@@ -65,7 +65,7 @@ This turns multiple mod updates into **one clean restart**.
 
 ## Supported detection modes
 
-The Restart Delay Companion supports:
+The Restart Companion supports:
 
 ### 🔍 Detection
 - **Local folder monitoring**
@@ -101,7 +101,7 @@ RESTART NEEDED now. (Use host panel/app)
 
 Both tools support Discord webhooks.
 
-Restart Delay Companion can send messages for:
+Restart Companion can send messages for:
 - Restart triggered
 - Restart succeeded
 - Restart failed / fallback used
@@ -132,7 +132,7 @@ This separation is intentional and is what makes the system safe.
 7. Timer expires → server restarts cleanly
 8. Players reconnect with matching mods
 
-No PBO errors. No manual restarts. No downtime chaos. (YES REALLY! this year old PAIN fixed) :)
+No PBO errors. No manual restarts. No downtime chaos. (YES REALLY! this years old PAIN fixed) :)
 
 ---
 
