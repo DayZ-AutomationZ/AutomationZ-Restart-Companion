@@ -166,11 +166,45 @@ Each tool is independent, but stronger together.
 
 ---
 
-## Author
+## Credits
 
-Created by **Danny van den Brande**  
-Open-source, admin-driven, built from real server experience.
+---
+🧩 AutomationZ 
+These tools are part of the AutomationZ Admin Toolkit:
 
-Support development:
-- ☕ https://ko-fi.com/dannyvandenbrande
-- 🧠 https://github.com/DayZ-AutomationZ
+- AutomationZ Mod Update Auto Deploy (steam workshop)
+- AutomationZ Uploader
+- AutomationZ Scheduler
+- AutomationZ Server Backup Scheduler
+- AutomationZ Server Health
+- AutomationZ Config Diff 
+- AutomationZ Admin Orchestrator
+- AutomationZ Log Cleanup Scheduler
+- AutomationZ_Restart_Loop_Guard
+
+Together they form a complete server administration solution.
+
+### 💚 Support the project
+
+AutomationZ tools are built for server owners by a server owner.  
+If these tools save you time or help your community, consider supporting development.
+
+☕ Support me [Ko-fi](https://ko-fi.com/dannyvandenbrande) 
+
+Created by **Danny van den Brande** “Built to quietly solve problems, not to impress.”
+DayZ AutomationZ [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R51QD7BU)
+
+## Attribution & Credits
+
+AutomationZ is an open-source project created and maintained by **Danny van den Brande**.
+
+If you fork, modify, or redistribute this project, you **must** retain the original
+copyright notice and MIT license, as required by the license.
+
+Visible attribution in the UI or documentation is **appreciated**, but not required.
+If you build upon AutomationZ, please consider crediting the original project:
+
+**AutomationZ**  
+https://github.com/DayZ-AutomationZ
+
+Thank you for respecting the work and the time behind it.
